@@ -1,4 +1,5 @@
-sample video editor
+sample video editor with ffmpeg and js
+
 from https://www.ffmpeg.org/ download and install ffmpeg
 
 from http://www.dvdvideomedia.com/ download and install free cutter joiner
