@@ -1,0 +1,135 @@
+<html>
+
+<button onclick="playVid()" type="button">Play Video</button>
+<button onclick="pauseVid()" type="button">Pause Video</button><br>
+<video id="myVideo" width="640" height="360" controls onmousemove="dimens(this)" accesskey="v">
+  <source src="mp3_mp4\video.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video><br>
+<p id="dems"></p></p><br>
+<button onclick="myFunction1()">Remove selected</button>
+<button type="button" onclick="myFunction2()" accesskey="c">Insert option before selected</button>
+<button onclick="savebat()">Save code</button>time=<input type="text" id="tims" value="3"><br>
+  <select id="mySelect" size="10">
+    <option>0</option>
+  </select>
+  
+<textarea rows="10" cols="50" id="gcode" ></textarea>
+
+<script>
+document.getElementById("mySelect").selectedIndex = "0";
+var vid = document.getElementById("myVideo");
+var gcode = document.getElementById('gcode');
+var tim = document.getElementById("tims");
+var fileNameToSaveAs="";
+var a="ffmpeg.exe -i ";
+// a+video+b+inceput+c+nume_output+\n
+var b=" -c:v:0 copy -ss ";
+var c="  -t 00:00:0";
+var c1 =" -y ";
+var d="\r\n Pause 0\r\n";
+var e=10;
+var i;
+
+
+var x = setInterval(function() {
+
+ var xx = document.getElementById("mySelect");
+ 
+
+
+  
+  
+if (e < xx.length) {
+vid.currentTime = xx.options[e].text;
+vid.play();}
+
+
+
+if (e==xx.length) {// se e arriva a ultimu element ... pause
+e=100;
+vid.pause();
+}
+//tim.value=e;//xx.length;
+e++;
+
+if (e>xx.length) { //se e mai mare ca ultimu element ... sempre 100 e pause
+e=100;
+vid.pause();
+}
+}, 3500);
+
+
+function playVid() { 
+e=0;
+   
+} 
+
+
+
+
+function dimens(e) {
+
+  document.getElementById("dems").innerHTML = vid.currentTime;
+}
+
+ 
+function myFunction1() {
+  var x = document.getElementById("mySelect");
+  y = document.getElementById("mySelect").length;
+  if (y>1) {x.remove(x.selectedIndex);
+  document.getElementById("mySelect").selectedIndex = "0";
+  }
+  
+  scrie();
+}
+
+function myFunction2() {
+  var x = document.getElementById("mySelect");
+  if (x.selectedIndex >= 0) {
+    var option = document.createElement("option");
+    option.text = vid.currentTime;
+    var sel = x.options[x.selectedIndex];  
+    x.add(option, sel);
+	
+  }
+  scrie();
+}
+
+function scrie() {
+ var x = document.getElementById("mySelect");
+ gcode.value="";
+
+  for (i = 0; i < x.length; i++) {
+     gcode.value +=a+"video.mp4"+b+x.options[i].text+c+tim.value+c1+"outputx"+i+".mp4\r\n";
+  }
+  gcode.value +=d;
+}
+
+function savebat() {
+ fileNameToSaveAs = "cut.bat";
+ gcode = document.getElementById('gcode').value;
+ saveTextAsFile();
+}
+
+function saveTextAsFile()
+{ 
+var textToSaveAsBlob = new Blob([gcode], {type:"text/plain"});
+var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+var downloadLink = document.createElement("a");
+downloadLink.download = fileNameToSaveAs;
+downloadLink.innerHTML = "Download File";
+downloadLink.href = textToSaveAsURL;
+downloadLink.onclick = destroyClickedElement;
+downloadLink.style.display = "none";
+document.body.appendChild(downloadLink);
+downloadLink.click();
+}
+
+function destroyClickedElement(event)
+{
+document.body.removeChild(event.target);
+}
+</script>
+
+</html>
