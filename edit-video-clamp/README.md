@@ -1,4 +1,7 @@
 sample video editor
+from https://www.ffmpeg.org/ download and install ffmpeg
+from http://www.dvdvideomedia.com/ download and install free cutter joiner
+optional from https://www.fosshub.com/Audacity-old.html download and install audacity-win-2.2.2
 
     The method is to ultim.html that use js to create a batch script ( cut.bat )with time video that be cut ...
     the batch script call ffmpeg and cut video in many pieces. 
