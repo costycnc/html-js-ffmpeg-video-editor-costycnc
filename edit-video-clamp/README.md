@@ -1,8 +1,9 @@
 sample video editor
 
     The method is to use js to create a batch script ( cut.bat )with time video that be cut ...
-    the batch script call ffmpeg and cut video in many pieces. (The video that can be split need
-    to be included in advance in folder mp3_mp4 with name video.mp4)in many pieces. 
+    the batch script call ffmpeg and cut video in many pieces. 
+    (The video that can be split need
+    to be included in advance in folder mp3_mp4 with name video.mp4). 
     When run cut.bat the pieces will be saved to cut folder.
      Now these split video need to be concantenate ... 
     I use this metod to insert video an time music events ... so i use audacity-win-2.2.2 to detect
