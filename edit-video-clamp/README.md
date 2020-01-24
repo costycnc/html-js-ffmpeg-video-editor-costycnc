@@ -26,5 +26,5 @@ sample video editor
     2."cut.bat" will split  "mp3_mp4/video.mp4" in many piece and put it in "cut" folder
     3."cutter-joiner.exe" will joined all files from "cut" folder in one video "joined-all.mp4"
     4."music.bat" will add to "joined-all.mp4" the "mp3_mp4/audio.mp3"
-    5.the final file will be "output.mp4"
+    5.the final file will be "output.mp4" 
 
